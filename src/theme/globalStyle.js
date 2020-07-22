@@ -6,6 +6,9 @@ const GlobalStyle = createGlobalStyle`
   * { box-sizing: border-box; }
 
   // Add more global styles here
+  * {
+    font-family: Roboto, sans-serif;
+  }
 `;
 
 export default GlobalStyle;

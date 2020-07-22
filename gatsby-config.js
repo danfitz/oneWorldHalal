@@ -15,6 +15,18 @@ module.exports = {
     siteUrl: 'https://your-site.com',
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Roboto:400,500'],
+        },
+        custom: {
+          families: ['League Spartan'],
+          urls: ['fonts.css'],
+        },
+      },
+    },
     /**
      * head metadata
      * used to add valuable metadata to HTML head
