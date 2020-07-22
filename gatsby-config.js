@@ -7,12 +7,11 @@
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: "Dan Fitz's Client Starter",
-    description:
-      'A Gatsby starter with all of my favourite tools pre-configured: redux, rebass, styled-components, and react-helmet',
-    author: 'Dan Fitz',
-    keywords: ['keywords', 'go', 'here'],
-    siteUrl: 'https://your-site.com',
+    title: 'One World Halal',
+    description: 'Halal for All',
+    author: 'One World Halal',
+    keywords: ['halal', 'food', 'eating'],
+    siteUrl: 'https://oneworldhalal.com',
   },
   plugins: [
     {
@@ -42,8 +41,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://your-site.com',
-        sitemap: 'https://your-site.com/sitemap.xml',
+        host: 'https://oneworldhalal.com',
+        sitemap: 'https://oneworldhalal.com/sitemap.xml',
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },

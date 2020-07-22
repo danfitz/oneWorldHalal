@@ -5,9 +5,9 @@ const GlobalStyle = createGlobalStyle`
   ${normalize}
   * { box-sizing: border-box; }
 
-  // Add more global styles here
   * {
     font-family: Roboto, sans-serif;
+    font-weight: ${({ theme }) => theme.fontWeights.body};
   }
 `;
 

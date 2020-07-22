@@ -13,7 +13,7 @@ const Home = () => {
     <>
       <Flex as='main' flexDirection='column' alignItems='center'>
         <Heading as='h1' my='md'>
-          One World Halal
+          Contact
         </Heading>
         <Button p='sm' onClick={incrementCount}>
           Increment: {count}
