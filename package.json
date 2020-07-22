@@ -1,0 +1,43 @@
+{
+  "name": "gatsby-dan-fitz-starter",
+  "private": true,
+  "description": "A Gatsby starter with all of my favourite tools pre-configured: redux, rebass, styled-components, and react-helmet",
+  "version": "0.1.0",
+  "license": "0BSD",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "dependencies": {
+    "babel-plugin-styled-components": "^1.10.7",
+    "gatsby": "^2.23.12",
+    "gatsby-plugin-react-helmet": "^3.3.10",
+    "gatsby-plugin-robots-txt": "^1.5.1",
+    "gatsby-plugin-sitemap": "^2.4.11",
+    "gatsby-plugin-styled-components": "^3.3.10",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^6.1.0",
+    "react-redux": "^7.2.0",
+    "rebass": "^4.0.7",
+    "redux": "^4.0.5",
+    "styled-components": "^5.1.1",
+    "styled-normalize": "^8.0.7"
+  },
+  "devDependencies": {
+    "prettier": "2.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  }
+}
