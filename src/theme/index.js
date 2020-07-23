@@ -7,7 +7,9 @@ fontSizes.heading = fontSizes[2];
 
 const colors = {
   black: '#1b1b1b',
+  trueBlack: '#000000',
   white: '#fffaf0',
+  trueWhite: '#ffffff',
   blue: '#365194',
   orange: '#de8b45',
   magenta: '#c52271',
@@ -63,6 +65,14 @@ const text = {
 };
 
 const variants = {
+  link: {
+    textDecoration: 'none',
+    color: 'black',
+    fontWeight: 'subheading',
+    ':focus, :hover': {
+      color: 'magenta',
+    },
+  },
   navLink: {
     display: 'block',
     mb: 'lg',

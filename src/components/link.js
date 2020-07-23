@@ -1,6 +1,6 @@
 import React from 'react';
 import { node, string, oneOfType } from 'prop-types';
-import { RebassLink } from 'rebass/styled-components';
+import { Link as RebassLink } from 'rebass/styled-components';
 import { Link as GatsbyLink } from 'gatsby';
 
 const Link = ({ children, ...props }) => {
