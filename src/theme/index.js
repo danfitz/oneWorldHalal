@@ -10,6 +10,8 @@ const colors = {
   trueBlack: '#000000',
   white: '#fffaf0',
   trueWhite: '#ffffff',
+  darkGray: '#242425',
+  mediumGray: '#959595',
   blue: '#365194',
   orange: '#de8b45',
   magenta: '#c52271',
@@ -26,12 +28,15 @@ const space = [
   '2rem', // 6
   '3rem', // 7
   '4rem', // 8
+  '5rem', // 9
+  '6rem', // 10
 ];
 space.xs = space[1];
 space.sm = space[2];
 space.md = space[4];
 space.lg = space[6];
 space.xl = space[8];
+space.xxl = space[10];
 
 const zIndices = {
   above: 10,
@@ -46,7 +51,7 @@ const fonts = {
 
 const fontWeights = {
   heading: 700,
-  bold: 700,
+  bold: 500,
   subheading: 500,
   body: 400,
 };

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Box, Image } from 'rebass/styled-components';
-import { Wrapper, Link } from '../index';
-import Logo from '../../assets/logo.png';
+import { Box } from 'rebass/styled-components';
+import { Wrapper, Link, Logo } from '../index';
 import SandwichMenu from './sandwichMenu';
 
 const headerSx = {
@@ -63,9 +62,7 @@ const Header = () => {
         justifyContent='space-between'
         alignItems='center'
       >
-        <Link to='/'>
-          <Image src={Logo} width='75px' alt='One World Halal' />
-        </Link>
+        <Logo />
 
         <SandwichMenu
           onClick={() => setMenuOpen(!menuOpen)}
