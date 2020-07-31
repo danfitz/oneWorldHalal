@@ -1,7 +1,7 @@
 import React from 'react';
 import { string, node } from 'prop-types';
-import Header from './header';
-import SEO from './seo';
+import Header from '../header';
+import SEO from '../seo';
 
 const Layout = ({ pageTitle, children }) => (
   <>

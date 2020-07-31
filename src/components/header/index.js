@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Box, Image } from 'rebass/styled-components';
+import { Wrapper, Link } from '../index';
 import Logo from '../../assets/logo.png';
-import Link from '../link';
 import SandwichMenu from './sandwichMenu';
 
 const headerSx = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
+  // display: 'flex',
+  // justifyContent: 'space-between',
+  // alignItems: 'center',
   py: 'sm',
-  px: ['md', 'lg'],
+  // px: ['md', 'lg'],
 };
 
 const navSx = {
@@ -20,7 +20,7 @@ const navSx = {
   top: '6rem',
   left: 0,
   right: 0,
-  bg: '#fff',
+  bg: 'trueWhite',
   ul: {
     display: 'flex',
     listStyle: 'none',
@@ -58,31 +58,41 @@ const Header = () => {
 
   return (
     <Box as='header' sx={headerSx}>
-      <Link to='/'>
-        <Image src={Logo} width='75px' alt='One World Halal' />
-      </Link>
+      <Wrapper
+        display='flex'
+        justifyContent='space-between'
+        alignItems='center'
+      >
+        <Link to='/'>
+          <Image src={Logo} width='75px' alt='One World Halal' />
+        </Link>
 
-      <SandwichMenu
-        onClick={() => setMenuOpen(!menuOpen)}
-        display={['block', 'none']}
-      />
+        <SandwichMenu
+          onClick={() => setMenuOpen(!menuOpen)}
+          display={['block', 'none']}
+        />
 
-      <Box as='nav' sx={navSx} display={[menuOpen ? 'block' : 'none', 'block']}>
-        <ul>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-            <Link to='/about'>About</Link>
-          </li>
-          <li>
-            <Link to='/products'>Products</Link>
-          </li>
-          <li>
-            <Link to='/contact'>Contact</Link>
-          </li>
-        </ul>
-      </Box>
+        <Box
+          as='nav'
+          sx={navSx}
+          display={[menuOpen ? 'block' : 'none', 'block']}
+        >
+          <ul>
+            <li>
+              <Link to='/'>Home</Link>
+            </li>
+            <li>
+              <Link to='/about'>About</Link>
+            </li>
+            <li>
+              <Link to='/products'>Products</Link>
+            </li>
+            <li>
+              <Link to='/contact'>Contact</Link>
+            </li>
+          </ul>
+        </Box>
+      </Wrapper>
     </Box>
   );
 };
