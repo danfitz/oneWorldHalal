@@ -3,7 +3,15 @@ import {
   faFacebook,
   faTwitter,
   faPinterest,
+  faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faFacebook, faTwitter, faPinterest, faPhone, faEnvelope);
+library.add(
+  faFacebook,
+  faTwitter,
+  faPinterest,
+  faInstagram,
+  faPhone,
+  faEnvelope
+);
