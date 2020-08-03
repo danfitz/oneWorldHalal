@@ -4,6 +4,7 @@ import { normalize } from 'styled-normalize';
 const GlobalStyle = createGlobalStyle`
   ${normalize}
   * { box-sizing: border-box; }
+  // * { border: 1px solid red; }
 
   html {
     font-family: Roboto, sans-serif;

@@ -2,8 +2,8 @@ import React from 'react';
 import { string, node } from 'prop-types';
 import Header from '../header';
 import Footer from '../footer';
-
 import SEO from '../seo';
+import '../../utils/fontAwesome';
 
 const Layout = ({ pageTitle, children }) => (
   <>

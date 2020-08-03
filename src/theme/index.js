@@ -11,6 +11,7 @@ const colors = {
   white: '#fffaf0',
   trueWhite: '#ffffff',
   darkGray: '#242425',
+  darkishGray: '#4c4c4c',
   mediumGray: '#959595',
   blue: '#365194',
   orange: '#de8b45',
@@ -73,7 +74,7 @@ const variants = {
   link: {
     textDecoration: 'none',
     color: 'black',
-    fontWeight: 'subheading',
+    cursor: 'pointer',
     ':focus, :hover': {
       color: 'magenta',
     },

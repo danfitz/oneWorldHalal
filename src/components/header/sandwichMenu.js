@@ -7,6 +7,7 @@ const Label = styled.label`
   height: 2rem;
   width: 3rem;
   position: relative;
+  left: 0.5rem;
   float: right;
   z-index: ${({ theme }) => theme.zIndices.fixed};
   cursor: pointer;
