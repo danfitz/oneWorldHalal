@@ -1,26 +1,44 @@
 import React from 'react';
-import { Flex, Heading, Button } from 'rebass/styled-components';
-import { useDispatch, useSelector } from 'react-redux';
-import { increment } from '../store/actions';
+import { useStaticQuery, graphql } from 'gatsby';
+import { HeroBanner, ProductListing } from '../components';
 
-const Home = () => {
-  const dispatch = useDispatch();
-  const count = useSelector(state => state.count);
+const Products = () => {
+  const { allContentfulPage } = useStaticQuery(graphql`
+    query ProductsPageQuery {
+      allContentfulPage(filter: { slug: { eq: "products" } }) {
+        edges {
+          node {
+            heroTitle
+            heroImage {
+              file {
+                url
+              }
+            }
+            heroDescription
+            buttonText
+            buttonSlug
+            hideHeroContent
+          }
+        }
+      }
+    }
+  `);
 
-  const incrementCount = () => dispatch(increment());
+  const page = allContentfulPage.edges[0].node;
 
   return (
     <>
-      <Flex as='main' flexDirection='column' alignItems='center'>
-        <Heading as='h1' my='md'>
-          Products
-        </Heading>
-        <Button p='sm' onClick={incrementCount}>
-          Increment: {count}
-        </Button>
-      </Flex>
+      <HeroBanner
+        title={page.heroTitle}
+        description={page.heroDescription}
+        buttonText={page.buttonText}
+        buttonSlug={page.buttonSlug}
+        hideHeroContent={page.hideHeroContent}
+        heroImage={page.heroImage.file.url}
+      />
+      <ProductListing />
     </>
   );
 };
 
-export default Home;
+export default Products;

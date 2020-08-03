@@ -4,7 +4,7 @@ import { HeroBanner } from '../components';
 
 const Home = () => {
   const { allContentfulPage } = useStaticQuery(graphql`
-    query PageQuery {
+    query HomepageQuery {
       allContentfulPage(filter: { slug: { eq: "/" } }) {
         edges {
           node {

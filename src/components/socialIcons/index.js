@@ -3,7 +3,6 @@ import { arrayOf, shape, string } from 'prop-types';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { Box } from 'rebass/styled-components';
 import { Link } from '../index';
-import theme from '../../theme';
 
 const SocialIcons = ({ brands }) => (
   <Box

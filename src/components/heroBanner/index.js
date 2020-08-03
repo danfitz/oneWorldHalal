@@ -64,15 +64,19 @@ const HeroBanner = ({
         >
           {title}
         </Heading>
-        <Text
-          as='p'
-          color='white'
-          fontSize='1.25rem'
-          mb='lg'
-          className={hideHeroContent && 'visuallyHidden'}
-        >
-          {description}
-        </Text>
+
+        {description && (
+          <Text
+            as='p'
+            color='white'
+            fontSize='1.25rem'
+            mb='lg'
+            className={hideHeroContent && 'visuallyHidden'}
+          >
+            {description}
+          </Text>
+        )}
+
         {buttonText && buttonSlug && !hideHeroContent && (
           <Button variant='dark' to={`/${buttonSlug}`}>
             {buttonText}
@@ -85,15 +89,16 @@ const HeroBanner = ({
 
 HeroBanner.propTypes = {
   title: string.isRequired,
-  description: string.isRequired,
+  description: string,
   buttonText: string.isRequired,
   buttonSlug: string.isRequired,
   heroImage: string.isRequired,
-  imageOnly: bool,
+  hideHeroContent: bool,
 };
 
 HeroBanner.defaultProps = {
-  imageOnly: false,
+  description: null,
+  hideHeroContent: false,
 };
 
 export default HeroBanner;

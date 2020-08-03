@@ -6,3 +6,4 @@ export { default as Layout } from './layout';
 export { default as SEO } from './seo';
 export { default as SocialIcons } from './socialIcons';
 export { default as HeroBanner } from './heroBanner';
+export { default as ProductListing } from './productListing';
