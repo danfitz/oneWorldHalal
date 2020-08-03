@@ -21,6 +21,12 @@ const SocialIcons = ({ brands }) => (
             ':focus, :hover': {
               color: 'white',
             },
+            ':visited': {
+              color: 'orange',
+              ':focus, :hover': {
+                color: 'white',
+              },
+            },
           }}
         >
           <span className='visuallyHidden'>{brand.name}</span>

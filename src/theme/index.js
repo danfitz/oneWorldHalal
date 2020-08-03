@@ -1,9 +1,10 @@
 const breakpoints = ['992px'];
 
-const fontSizes = ['1rem', '2rem', '3rem'];
+const fontSizes = ['1rem', '2rem', '3rem', '4rem', '5rem'];
 fontSizes.body = fontSizes[0];
 fontSizes.subheading = fontSizes[1];
 fontSizes.heading = fontSizes[2];
+fontSizes.superheading = fontSizes[4];
 
 const colors = {
   black: '#1b1b1b',
@@ -74,6 +75,12 @@ const variants = {
   link: {
     textDecoration: 'none',
     color: 'black',
+    ':visited': {
+      color: 'black',
+      ':focus, :hover': {
+        color: 'magenta',
+      },
+    },
     cursor: 'pointer',
     ':focus, :hover': {
       color: 'magenta',
@@ -108,18 +115,32 @@ const variants = {
 
 const buttons = {
   primary: {
-    color: 'black',
-    bg: 'accent',
-    borderRadius: 0,
-  },
-  none: {
-    color: 'black',
-    padding: 0,
-    bg: 'transparent',
+    color: 'white',
+    bg: 'magenta',
     cursor: 'pointer',
-    outline: 0,
+    py: 'md',
+    px: 'lg',
+    fontSize: '1.25rem',
+    fontWeight: 'bold',
+    borderRadius: 0,
     ':hover, :focus': {
-      color: 'accent',
+      bg: 'transparent',
+      boxShadow: '0 0 0 0.15rem magenta',
+      color: 'black',
+    },
+  },
+  dark: {
+    color: 'white',
+    bg: 'magenta',
+    cursor: 'pointer',
+    py: 'md',
+    px: 'lg',
+    fontSize: '1.25rem',
+    fontWeight: 'bold',
+    borderRadius: 0,
+    ':hover, :focus': {
+      bg: 'transparent',
+      boxShadow: '0 0 0 0.15rem magenta',
     },
   },
 };

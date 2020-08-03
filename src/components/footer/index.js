@@ -73,7 +73,10 @@ const Footer = () => {
                 <Link
                   href={`tel:${phoneNumber}`}
                   color='mediumGray'
-                  sx={{ ':hover, :focus': { color: 'white' } }}
+                  sx={{
+                    ':hover, :focus': { color: 'white' },
+                    ':visited': { color: 'mediumGray' },
+                  }}
                 >
                   {phoneNumber}
                 </Link>
@@ -86,7 +89,10 @@ const Footer = () => {
                 <Link
                   href={`mailto:${email}`}
                   color='mediumGray'
-                  sx={{ ':hover, :focus': { color: 'white' } }}
+                  sx={{
+                    ':hover, :focus': { color: 'white' },
+                    ':visited': { color: 'mediumGray' },
+                  }}
                 >
                   {email}
                 </Link>
