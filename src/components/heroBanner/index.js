@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { string, bool } from 'prop-types';
 import styled from 'styled-components';
 import { Box, Flex, Heading, Text } from 'rebass/styled-components';
@@ -10,7 +10,9 @@ const HeroImageBox = styled(Box)`
   background-size: cover;
   background-repeat: no-repeat;
   min-height: calc(100vh - 4rem);
+  opacity: 0;
   position: relative;
+  transition: opacity 1s ease;
 `;
 
 const HeroOverlay = styled(Flex)`
@@ -35,8 +37,23 @@ const HeroBanner = ({
   heroImage,
   hideHeroContent,
 }) => {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      const backgroundImage = window.getComputedStyle(ref.current)
+        .backgroundImage;
+      const src = backgroundImage.match(/\((.*?)\)/)[1].replace(/('|")/g, '');
+      const image = new Image();
+      image.onload = () => {
+        ref.current.style.opacity = 1;
+      };
+      image.src = src;
+    }
+  }, []);
+
   return (
-    <HeroImageBox url={heroImage}>
+    <HeroImageBox ref={ref} url={heroImage}>
       <HeroOverlay px={['lg', 'xl']} hideHeroContent={hideHeroContent}>
         <Heading
           as='h1'

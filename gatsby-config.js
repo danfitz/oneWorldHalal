@@ -8,13 +8,7 @@ require('dotenv').config();
 
 module.exports = {
   /* Your site config here */
-  siteMetadata: {
-    title: 'One World Halal',
-    description: 'Halal for All',
-    author: 'One World Halal',
-    keywords: ['halal', 'food', 'eating'],
-    siteUrl: 'https://oneworldhalal.com',
-  },
+  siteMetadata: {},
   plugins: [
     {
       resolve: 'gatsby-source-contentful',
