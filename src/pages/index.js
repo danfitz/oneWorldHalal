@@ -1,6 +1,7 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import { HeroBanner } from '../components';
+import { HeroBanner, InfoBlock } from '../components';
+import halalByHand from '../assets/halal-by-hand.png';
 
 const Home = () => {
   const { allContentfulPage } = useStaticQuery(graphql`
@@ -27,14 +28,22 @@ const Home = () => {
   const page = allContentfulPage.edges[0].node;
 
   return (
-    <HeroBanner
-      title={page.heroTitle}
-      description={page.heroDescription}
-      buttonText={page.buttonText}
-      buttonSlug={page.buttonSlug}
-      hideHeroContent={page.hideHeroContent}
-      heroImage={page.heroImage.file.url}
-    />
+    <>
+      <HeroBanner
+        title={page.heroTitle}
+        description={page.heroDescription}
+        buttonText={page.buttonText}
+        buttonSlug={page.buttonSlug}
+        hideHeroContent={page.hideHeroContent}
+        heroImage={page.heroImage.file.url}
+      />
+      <InfoBlock
+        title='Halal by Hand'
+        subtitle='Certified'
+        content='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+        image={{ url: halalByHand }}
+      />
+    </>
   );
 };
 

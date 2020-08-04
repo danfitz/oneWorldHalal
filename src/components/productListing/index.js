@@ -1,36 +1,9 @@
 import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import { Box, Flex, Image, Heading, Text } from 'rebass/styled-components';
+import { Box, Flex, Image, Heading } from 'rebass/styled-components';
 import { Label } from '@rebass/forms/styled-components';
 import styled from 'styled-components';
-import { Wrapper } from '../index';
-
-const DashedText = styled(Text)`
-  position: relative;
-  text-transform: uppercase;
-  letter-spacing: 0.5rem;
-
-  ::before {
-    content: '';
-    position: absolute;
-    left: -5rem;
-    top: 0.5rem;
-    width: 4rem;
-    height: 0.2rem;
-    border-top: 1px solid ${({ theme }) => theme.colors.mediumGray};
-    border-bottom: 1px solid ${({ theme }) => theme.colors.mediumGray};
-  }
-  ::after {
-    content: '';
-    position: absolute;
-    right: -4.5rem;
-    top: 0.5rem;
-    width: 4rem;
-    height: 0.2rem;
-    border-top: 1px solid ${({ theme }) => theme.colors.mediumGray};
-    border-bottom: 1px solid ${({ theme }) => theme.colors.mediumGray};
-  }
-`;
+import { Wrapper, DashedText } from '../index';
 
 const FilterList = styled(Flex)`
   display: flex;
@@ -123,13 +96,13 @@ const ProductListing = () => {
     <Box as='section' py={['xl', '12rem']}>
       <Wrapper textAlign='center' mb='xl'>
         <Heading as='h2' mb='md' fontSize={['subheading', 'heading']}>
-          One World Halal Menu
+          Our Menu
         </Heading>
-        <DashedText as='span'>Our Best Stuff</DashedText>
+        <DashedText>Halal by Hand</DashedText>
         <Box as='span' className='visuallyHidden'>
           Categories
         </Box>
-        <FilterList mt='md'>
+        <FilterList mt='lg'>
           <Box>
             <input
               type='radio'

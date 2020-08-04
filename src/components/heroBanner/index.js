@@ -9,7 +9,7 @@ const HeroImageBox = styled(Box)`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: calc(100vh - 4rem);
+  min-height: calc(75vh - 4rem);
   opacity: 0;
   position: relative;
   transition: opacity 1s ease;
