@@ -190,7 +190,10 @@ const ProductListing = () => {
             width={[1, 1 / 6]}
             p='md'
             sx={{
-              boxShadow: '0 0 0 1px #ccc',
+              boxShadow: ['none', '0 0 0 1px #ccc'],
+              ':not(:last-child)': {
+                mb: ['md', 0],
+              },
             }}
           >
             <Flex
@@ -204,10 +207,13 @@ const ProductListing = () => {
             <Heading
               as='h3'
               fontFamily='body'
-              fontSize='1.25rem'
+              fontSize={['1.5rem', '1.25rem']}
               fontWeight='bold'
               textAlign='center'
-              mt='lg'
+              mt={[0, 'lg']}
+              bg={['blue', 'transparent']}
+              py={['md', 0]}
+              color={['trueWhite', 'trueBlack']}
             >
               {product.name}
             </Heading>
