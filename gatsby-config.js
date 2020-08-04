@@ -8,7 +8,9 @@ require('dotenv').config();
 
 module.exports = {
   /* Your site config here */
-  siteMetadata: {},
+  siteMetadata: {
+    siteUrl: 'https://oneworldhalal.com',
+  },
   plugins: [
     {
       resolve: 'gatsby-source-contentful',
