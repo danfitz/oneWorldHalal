@@ -47,13 +47,19 @@ const FilterList = styled(Flex)`
   }
 `;
 
+const ImageWithShadow = styled(Image)`
+  filter: drop-shadow(
+    0.5rem 0.5rem 0.5rem ${({ theme }) => theme.colors.mediumGray}
+  );
+`;
+
 const ProductListing = () => {
   const {
     allContentfulProduct,
     allContentfulProductCategory,
   } = useStaticQuery(graphql`
     query ProductListing {
-      allContentfulProduct {
+      allContentfulProduct(sort: { order: ASC, fields: name }) {
         edges {
           node {
             category {
@@ -115,7 +121,7 @@ const ProductListing = () => {
             <Label
               tabIndex={0}
               htmlFor='all'
-              fontSize='1.5rem'
+              fontSize={['1.25rem', '1.5rem']}
               fontWeight='bold'
               width='auto'
             >
@@ -135,7 +141,7 @@ const ProductListing = () => {
               <Label
                 tabIndex={0}
                 htmlFor={category}
-                fontSize='1.5rem'
+                fontSize={['1.25rem', '1.5rem']}
                 fontWeight='bold'
                 width='auto'
               >
@@ -146,13 +152,15 @@ const ProductListing = () => {
         </FilterList>
       </Wrapper>
 
-      <Box
+      <Flex
         as='ul'
+        flexWrap='wrap'
         listStyle='none'
         pl={0}
-        display={['block', 'flex']}
-        flexWrap='wrap'
-        justifyContent={filteredProducts.length < 6 ? 'center' : 'flex-start'}
+        justifyContent={[
+          filteredProducts.length < 2 ? 'center' : 'flex-start',
+          filteredProducts.length < 6 ? 'center' : 'flex-start',
+        ]}
       >
         {filteredProducts.map(product => (
           <Flex
@@ -160,39 +168,35 @@ const ProductListing = () => {
             key={product.name}
             flexDirection='column'
             justifyContent='space-between'
-            width={[1, 1 / 6]}
-            p='md'
+            width={[1 / 2, 1 / 6]}
+            p={['md', 5]}
             sx={{
-              boxShadow: ['none', '0 0 0 1px #ccc'],
-              ':not(:last-child)': {
-                mb: ['md', 0],
-              },
+              boxShadow: '0 0 0 1px #ddd',
             }}
           >
             <Flex
               flexDirection='column'
               justifyContent='center'
               flex='1 1 auto'
-              bg='black'
             >
-              <Image src={product.primaryImage.file.url} alt={product.name} />
+              <ImageWithShadow
+                src={product.primaryImage.file.url}
+                alt={product.name}
+              />
             </Flex>
             <Heading
               as='h3'
               fontFamily='body'
-              fontSize={['1.5rem', '1.25rem']}
+              fontSize={['1.25rem', '1.4rem']}
               fontWeight='bold'
               textAlign='center'
-              mt={[0, 'lg']}
-              bg={['blue', 'transparent']}
-              py={['md', 0]}
-              color={['trueWhite', 'trueBlack']}
+              mt={['md', 'lg']}
             >
               {product.name}
             </Heading>
           </Flex>
         ))}
-      </Box>
+      </Flex>
     </Box>
   );
 };
