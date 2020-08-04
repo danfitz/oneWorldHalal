@@ -90,15 +90,14 @@ const HeroBanner = ({
 HeroBanner.propTypes = {
   title: string.isRequired,
   description: string,
-  buttonText: string.isRequired,
-  buttonSlug: string.isRequired,
+  buttonText: string,
+  buttonSlug: string,
   heroImage: string.isRequired,
-  hideHeroContent: bool,
+  hideHeroContent: bool.isRequired,
 };
 
 HeroBanner.defaultProps = {
   description: null,
-  hideHeroContent: false,
 };
 
 export default HeroBanner;
