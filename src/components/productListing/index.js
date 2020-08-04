@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Box, Flex, Image, Heading, Text } from 'rebass/styled-components';
 import { Label } from '@rebass/forms/styled-components';
@@ -75,7 +75,10 @@ const FilterList = styled(Flex)`
 `;
 
 const ProductListing = () => {
-  const { allContentfulProduct } = useStaticQuery(graphql`
+  const {
+    allContentfulProduct,
+    allContentfulProductCategory,
+  } = useStaticQuery(graphql`
     query ProductListing {
       allContentfulProduct {
         edges {
@@ -92,9 +95,29 @@ const ProductListing = () => {
           }
         }
       }
+      allContentfulProductCategory {
+        nodes {
+          name
+        }
+      }
     }
   `);
   const products = allContentfulProduct.edges.map(edge => edge.node);
+  const productCategories = allContentfulProductCategory.nodes
+    .map(node => node.name)
+    .sort();
+
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const handleCategoryChange = event => {
+    if (event.target.checked) {
+      setSelectedCategory(event.target.value);
+    }
+  };
+
+  const filteredProducts =
+    selectedCategory !== 'All'
+      ? products.filter(product => product.category.name === selectedCategory)
+      : products;
 
   return (
     <Box as='section' py={['xl', '12rem']}>
@@ -107,16 +130,36 @@ const ProductListing = () => {
           Categories
         </Box>
         <FilterList mt='md'>
-          {['Burgers', 'Cheese', 'Deli', 'Jamaican Patties'].map(category => (
-            <Box>
+          <Box>
+            <input
+              type='radio'
+              name='category'
+              id='all'
+              value='All'
+              checked={selectedCategory === 'All'}
+              onChange={handleCategoryChange}
+            />
+            <Label
+              tabIndex={0}
+              htmlFor='all'
+              fontSize='1.5rem'
+              fontWeight='bold'
+              width='auto'
+            >
+              All
+            </Label>
+          </Box>
+          {productCategories.map(category => (
+            <Box key={category}>
               <input
                 type='radio'
                 name='category'
                 id={category}
                 value={category}
+                checked={selectedCategory === category}
+                onChange={handleCategoryChange}
               />
               <Label
-                key={category}
                 tabIndex={0}
                 htmlFor={category}
                 fontSize='1.5rem'
@@ -126,9 +169,6 @@ const ProductListing = () => {
                 {category}
               </Label>
             </Box>
-            // <Box as='li' key={category} fontSize='1.5rem' fontWeight='bold'>
-            //   {category}
-            // </Box>
           ))}
         </FilterList>
       </Wrapper>
@@ -139,8 +179,9 @@ const ProductListing = () => {
         pl={0}
         display={['block', 'flex']}
         flexWrap='wrap'
+        justifyContent={filteredProducts.length < 6 ? 'center' : 'flex-start'}
       >
-        {products.map(product => (
+        {filteredProducts.map(product => (
           <Flex
             as='li'
             key={product.name}
@@ -149,7 +190,7 @@ const ProductListing = () => {
             width={[1, 1 / 6]}
             p='md'
             sx={{
-              boxShadow: '0 0 0 1px #959595',
+              boxShadow: '0 0 0 1px #ccc',
             }}
           >
             <Flex
