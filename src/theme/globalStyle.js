@@ -4,12 +4,13 @@ import { normalize } from 'styled-normalize';
 const GlobalStyle = createGlobalStyle`
   ${normalize}
   * { box-sizing: border-box; }
-  // * { border: 1px solid red; }
 
   html {
     font-family: Roboto, sans-serif;
     font-weight: ${({ theme }) => theme.fontWeights.body};
   }
+
+  body { overflow-x: hidden; }
 
   .visuallyHidden:not(:focus):not(:active) {
     position: absolute;
