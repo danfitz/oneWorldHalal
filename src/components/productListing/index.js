@@ -1,7 +1,9 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Box, Flex, Image, Heading, Text } from 'rebass/styled-components';
+import { Label } from '@rebass/forms/styled-components';
 import styled from 'styled-components';
+import { Wrapper } from '../index';
 
 const DashedText = styled(Text)`
   position: relative;
@@ -31,12 +33,31 @@ const DashedText = styled(Text)`
 `;
 
 const FilterList = styled(Flex)`
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   list-style: none;
   padding-left: 0;
 
-  li:not(:last-child) {
+  input[type='radio'] {
+    position: absolute;
+    left: 10000px;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  input[type='radio']:checked + label {
+    color: ${({ theme }) => theme.colors.orange};
+  }
+
+  label {
+    :hover,
+    :focus {
+      color: ${({ theme }) => theme.colors.orange};
+    }
+  }
+
+  > div:not(:last-child) {
     position: relative;
     margin-right: 2rem;
 
@@ -77,7 +98,7 @@ const ProductListing = () => {
 
   return (
     <Box as='section' py={['xl', '12rem']}>
-      <Box textAlign='center' mb='xl'>
+      <Wrapper textAlign='center' mb='xl'>
         <Heading as='h2' mb='md' fontSize={['subheading', 'heading']}>
           One World Halal Menu
         </Heading>
@@ -87,12 +108,30 @@ const ProductListing = () => {
         </Box>
         <FilterList mt='md'>
           {['Burgers', 'Cheese', 'Deli', 'Jamaican Patties'].map(category => (
-            <Box as='li' key={category} fontSize='1.5rem' fontWeight='bold'>
-              {category}
+            <Box>
+              <input
+                type='radio'
+                name='category'
+                id={category}
+                value={category}
+              />
+              <Label
+                key={category}
+                tabIndex={0}
+                htmlFor={category}
+                fontSize='1.5rem'
+                fontWeight='bold'
+                width='auto'
+              >
+                {category}
+              </Label>
             </Box>
+            // <Box as='li' key={category} fontSize='1.5rem' fontWeight='bold'>
+            //   {category}
+            // </Box>
           ))}
         </FilterList>
-      </Box>
+      </Wrapper>
 
       <Box
         as='ul'
@@ -124,7 +163,7 @@ const ProductListing = () => {
             <Heading
               as='h3'
               fontFamily='body'
-              fontSize='1.5rem'
+              fontSize='1.25rem'
               fontWeight='bold'
               textAlign='center'
               mt='lg'
