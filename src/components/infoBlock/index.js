@@ -5,7 +5,7 @@ import { Wrapper, DashedText } from '../index';
 
 const InfoBlock = ({ title, subtitle, content, image }) => {
   return (
-    <Box as='section' py={['xl', 'xxl']} textAlign='center'>
+    <Box as='section' py='xxl' textAlign='center'>
       <Wrapper width={[9 / 10, 1 / 3]}>
         <Heading as='h2' mb='md' fontSize={['subheading', 'heading']}>
           {title}
@@ -13,8 +13,8 @@ const InfoBlock = ({ title, subtitle, content, image }) => {
         <DashedText>{subtitle}</DashedText>
         <Text
           as='p'
-          my='xl'
-          fontSize='1.5rem'
+          my={['lg', 'xl']}
+          fontSize={['1.25rem', '1.5rem']}
           lineHeight='1.5'
           fontStyle='italic'
         >

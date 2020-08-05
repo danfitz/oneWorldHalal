@@ -3,20 +3,13 @@ import { Box } from 'rebass/styled-components';
 import { Wrapper, Link, Logo } from '../index';
 import SandwichMenu from './sandwichMenu';
 
-const headerSx = {
-  // display: 'flex',
-  // justifyContent: 'space-between',
-  // alignItems: 'center',
-  py: 'sm',
-  // px: ['md', 'lg'],
-};
-
 const navSx = {
   fontFamily: 'heading',
   fontSize: ['1.5rem', '1.1rem'],
   textAlign: ['center', 'left'],
-  position: ['fixed', 'static'],
-  top: '6rem',
+  position: ['absolute', 'static'],
+  zIndex: 'modal',
+  top: '5rem',
   left: 0,
   right: 0,
   bg: 'trueWhite',
@@ -54,9 +47,10 @@ const navSx = {
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    <Box as='header' sx={headerSx}>
+    <Box as='header' py='sm'>
       <Wrapper
         display='flex'
         justifyContent='space-between'
@@ -65,7 +59,8 @@ const Header = () => {
         <Logo />
 
         <SandwichMenu
-          onClick={() => setMenuOpen(!menuOpen)}
+          isOpen={menuOpen}
+          onChange={e => setMenuOpen(e.target.checked)}
           display={['block', 'none']}
         />
 
@@ -76,16 +71,24 @@ const Header = () => {
         >
           <ul>
             <li>
-              <Link to='/'>Home</Link>
+              <Link to='/' onClick={closeMenu}>
+                Home
+              </Link>
             </li>
             <li>
-              <Link to='/about'>About</Link>
+              <Link to='/about' onClick={closeMenu}>
+                About
+              </Link>
             </li>
             <li>
-              <Link to='/products'>Products</Link>
+              <Link to='/products' onClick={closeMenu}>
+                Products
+              </Link>
             </li>
             <li>
-              <Link to='/contact'>Contact</Link>
+              <Link to='/contact' onClick={closeMenu}>
+                Contact
+              </Link>
             </li>
           </ul>
         </Box>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { func, bool } from 'prop-types';
 import styled from 'styled-components';
 import { Box } from 'rebass/styled-components';
 
@@ -76,14 +77,15 @@ const MenuContainer = styled(Box)`
   // }
 `;
 
-const SandwichMenu = ({ onClick, ...props }) => (
+const SandwichMenu = ({ onChange, isOpen, ...props }, ref) => (
   <MenuContainer {...props}>
     <Input
       type='checkbox'
       className='visuallyHidden'
       id='menuButton'
       name='menuButton'
-      onClick={onClick}
+      onChange={onChange}
+      checked={isOpen}
     />
     <Label htmlFor='menuButton'>
       <span className='visuallyHidden'>View Menu</span>
@@ -91,5 +93,10 @@ const SandwichMenu = ({ onClick, ...props }) => (
     </Label>
   </MenuContainer>
 );
+
+SandwichMenu.propTypes = {
+  onChange: func.isRequired,
+  isOpen: bool.isRequired,
+};
 
 export default SandwichMenu;
