@@ -99,7 +99,7 @@ const ProductListing = () => {
       : products;
 
   return (
-    <Box as='section' py={['xl', '12rem']}>
+    <Box as='section' py={['xl', 'xxl']}>
       <Wrapper textAlign='center' mb='xl'>
         <Heading as='h2' mb='md' fontSize={['subheading', 'heading']}>
           Our Menu
