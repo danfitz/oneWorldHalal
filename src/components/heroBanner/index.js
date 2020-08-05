@@ -15,7 +15,7 @@ const HeroImageBox = styled(Box)`
   transition: opacity 1s ease;
 
   @media (min-width: ${({ theme }) => theme.breakpoints[0]}) {
-    min-height: calc(75vh - 4rem);
+    min-height: calc(80vh - 4rem);
   }
 `;
 

@@ -45,6 +45,16 @@ const FilterList = styled(Flex)`
       transform: rotate(15deg);
     }
   }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints[0]}) {
+    > div:not(:last-child) {
+      margin-right: 4rem;
+
+      ::before {
+        right: -2rem;
+      }
+    }
+  }
 `;
 
 const ImageWithShadow = styled(Image)`
@@ -171,7 +181,7 @@ const ProductListing = () => {
             width={[1 / 2, 1 / 6]}
             p={['md', 5]}
             sx={{
-              boxShadow: '0 0 0 1px #ddd',
+              boxShadow: '0 0 0 1px #eee',
             }}
           >
             <Flex
