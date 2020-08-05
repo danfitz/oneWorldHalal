@@ -34,7 +34,5 @@ export const wrapWithLayout = ({ element, props }) => {
     contact: 'Contact',
   };
 
-  console.log(props.location.pathname);
-
   return <Layout pageTitle={pageTitles[pathname] || '404'}>{element}</Layout>;
 };
