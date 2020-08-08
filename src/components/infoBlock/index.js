@@ -1,26 +1,40 @@
 import React from 'react';
-import { string, shape } from 'prop-types';
-import { Box, Image, Heading, Text } from 'rebass/styled-components';
-import { Wrapper, DashedText } from '../index';
+import { string, object, shape } from 'prop-types';
+import { Box, Heading, Text } from 'rebass/styled-components';
+import { Image, Wrapper, DashedText } from '../index';
 
-const InfoBlock = ({ title, subtitle, content, image }) => {
+const InfoBlock = ({
+  title,
+  subtitle,
+  childContentfulInfoBlockContentTextNode: { content },
+  image,
+}) => {
   return (
     <Box as='section' py={['xl', 'xxl']} textAlign='center'>
       <Wrapper width={[9 / 10, 1 / 3]}>
         <Heading as='h2' mb='md' fontSize={['subheading', 'heading']}>
           {title}
         </Heading>
-        <DashedText>{subtitle}</DashedText>
+        <DashedText mb={['lg', 'xl']}>{subtitle}</DashedText>
+
         <Text
           as='p'
           my={['lg', 'xl']}
-          fontSize={['body', '1.25rem']}
+          fontSize={['1.1rem', '1.25rem']}
           lineHeight='1.5'
           fontStyle='italic'
         >
           {content}
         </Text>
-        <Image src={image.url} alt='' maxWidth='100px' />
+
+        {image && (
+          <Image
+            fluid={image.fluid}
+            alt={image.title}
+            maxWidth='100px'
+            style={{ margin: '0 auto' }}
+          />
+        )}
       </Wrapper>
     </Box>
   );
@@ -29,9 +43,12 @@ const InfoBlock = ({ title, subtitle, content, image }) => {
 InfoBlock.propTypes = {
   title: string.isRequired,
   subtitle: string.isRequired,
-  content: string.isRequired,
+  childContentfulInfoBlockContentTextNode: shape({
+    content: string.isRequired,
+  }),
   image: shape({
-    url: string.isRequired,
+    fluid: object.isRequired,
+    title: string.isRequired,
   }),
 };
 

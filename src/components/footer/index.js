@@ -10,7 +10,9 @@ const Footer = () => {
   const { contentfulFooter } = useStaticQuery(graphql`
     query FooterQuery {
       contentfulFooter {
-        text
+        childContentfulFooterTextTextNode {
+          text
+        }
         phoneNumber
         email
         socialMedia {
@@ -20,7 +22,12 @@ const Footer = () => {
       }
     }
   `);
-  const { text, phoneNumber, email, socialMedia } = contentfulFooter;
+  const {
+    childContentfulFooterTextTextNode: { text },
+    phoneNumber,
+    email,
+    socialMedia,
+  } = contentfulFooter;
 
   return (
     <Box as='footer' bg='darkGray'>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import { HeroBanner, ProductListing } from '../components';
+import { HeroBanner, ProductListing, createComponent } from '../components';
 
 const Products = () => {
   const { allContentfulPage } = useStaticQuery(graphql`
@@ -18,6 +18,25 @@ const Products = () => {
             buttonText
             buttonSlug
             hideHeroContent
+            components {
+              sys {
+                contentType {
+                  sys {
+                    id
+                  }
+                }
+              }
+              title
+              subtitle
+              childContentfulInfoBlockContentTextNode {
+                content
+              }
+              image {
+                fluid(maxWidth: 100) {
+                  ...GatsbyContentfulFluid_withWebp
+                }
+              }
+            }
           }
         }
       }
@@ -36,6 +55,7 @@ const Products = () => {
         hideHeroContent={page.hideHeroContent}
         heroImage={page.heroImage}
       />
+      {page.components && page.components.map(createComponent)}
       <ProductListing />
     </>
   );

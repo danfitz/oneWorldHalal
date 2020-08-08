@@ -1,3 +1,6 @@
+import React from 'react';
+import InfoBlock from './infoBlock';
+
 // Layout-related components
 export { default as Layout } from './layout';
 export { default as SEO } from './seo';
@@ -16,3 +19,17 @@ export { default as SocialIcons } from './socialIcons';
 export { default as HeroBanner } from './heroBanner';
 export { default as ProductListing } from './productListing';
 export { default as InfoBlock } from './infoBlock';
+
+const componentMapper = {
+  infoBlock: InfoBlock,
+};
+
+export const createComponent = (componentData, key) => {
+  const Component = componentMapper[componentData.sys.contentType.sys.id];
+
+  if (Component) {
+    return <Component key={key} {...componentData} />;
+  }
+
+  return null;
+};
