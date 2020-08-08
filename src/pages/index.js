@@ -40,7 +40,7 @@ const Home = () => {
       <InfoBlock
         title='Halal by Hand'
         subtitle='Certified'
-        content='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+        content='All One World Halal products are strictly Halal by Hand. Halal, the simple term used to describe what’s permissible, refers to the specific process involved in ensuring the route from farm to fork, adheres the most stringent controls and quality standards. Specifically, the respect shown for any living object and the process to ensure the complete draining of the animal blood, which leads to a noticeably cleaner and better product than any comparable non-halal cut. Good things take time, and in the case of halal, that time leads to a better, cleaner and healthier product. And that’s something to be proud of.'
         image={{ url: halalByHand }}
       />
     </>

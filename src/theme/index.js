@@ -1,11 +1,29 @@
 const breakpoints = ['992px'];
 breakpoints.desktop = breakpoints[0];
 
-const fontSizes = ['1rem', '2rem', '3rem', '4rem', '5rem'];
-fontSizes.body = fontSizes[0];
-fontSizes.subheading = fontSizes[1];
-fontSizes.heading = fontSizes[2];
-fontSizes.superheading = fontSizes[4];
+const fontSizes = [
+  0,
+  '0.25rem', // 1
+  '0.5rem', // 2
+  '0.75rem', // 3
+  '1rem', // 4
+  '1.5rem', // 5
+  '2rem', // 6
+  '3rem', // 7
+  '4rem', // 8
+  '5rem', // 9
+  '6rem', // 10
+];
+fontSizes.xs = fontSizes[1];
+fontSizes.sm = fontSizes[2];
+fontSizes.md = fontSizes[4];
+fontSizes.lg = fontSizes[6];
+fontSizes.xl = fontSizes[8];
+fontSizes.xxl = fontSizes[10];
+fontSizes.body = fontSizes[4];
+fontSizes.subheading = fontSizes[6];
+fontSizes.heading = fontSizes[7];
+fontSizes.superheading = fontSizes[9];
 
 const colors = {
   black: '#1b1b1b',

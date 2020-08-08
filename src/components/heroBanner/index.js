@@ -42,7 +42,7 @@ const HeroBanner = ({
 }) => {
   return (
     <HeroBackgroundImage fluid={heroImage.fluid}>
-      <HeroOverlay px={['lg', 'xl']} hideHeroContent={hideHeroContent}>
+      <HeroOverlay p={['lg', 'xl']} hideHeroContent={hideHeroContent}>
         <Heading
           as='h1'
           color='trueWhite'

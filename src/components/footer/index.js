@@ -27,7 +27,7 @@ const Footer = () => {
       <Wrapper
         display={['display', 'flex']}
         justifyContent='space-between'
-        py='xxl'
+        py={['xl', 'xxl']}
         textAlign={['center', 'left']}
       >
         <Flex
@@ -37,7 +37,7 @@ const Footer = () => {
           width={[1, 1 / 2]}
         >
           <Logo sx={{ bg: 'trueWhite', borderRadius: '180px', p: 3 }} />
-          <Text as='p' color='mediumGray' mt='lg'>
+          <Text as='p' fontSize={['body', '1.1rem']} color='mediumGray' mt='lg'>
             {text}
           </Text>
         </Flex>
@@ -46,9 +46,15 @@ const Footer = () => {
           flexDirection='column'
           justifyContent='space-between'
           width={[1, 1 / 2]}
-          mt={['xxl', 0]}
+          mt={['xl', 0]}
         >
-          <Heading as='h4' color='white' textAlign={['center', 'right']}>
+          <Heading
+            as='h4'
+            color='white'
+            mb={[5, 0]}
+            fontSize={['subheading', 'heading']}
+            textAlign={['center', 'right']}
+          >
             Contact
           </Heading>
           <Flex
