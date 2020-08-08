@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'rebass/styled-components';
+import { Box, Text } from 'rebass/styled-components';
 import { node } from 'prop-types';
 import styled from 'styled-components';
 
@@ -32,9 +32,11 @@ const StyledText = styled(Text)`
 `;
 
 const DashedText = ({ children, ...props }) => (
-  <StyledText as='span' {...props}>
-    {children}
-  </StyledText>
+  <Box sx={{ overflowX: 'hidden' }}>
+    <StyledText as='span' {...props}>
+      {children}
+    </StyledText>
+  </Box>
 );
 
 DashedText.propTypes = {

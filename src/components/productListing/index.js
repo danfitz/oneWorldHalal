@@ -15,7 +15,6 @@ const FilterList = styled(Flex)`
 
   input[type='radio'] {
     position: absolute;
-    left: 10000px;
     opacity: 0;
     visibility: hidden;
   }
