@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import { Box, Flex, Image, Heading } from 'rebass/styled-components';
+import { Box, Flex, Heading } from 'rebass/styled-components';
 import { Label } from '@rebass/forms/styled-components';
 import styled from 'styled-components';
-import { Wrapper, DashedText } from '../index';
+import { Image, Wrapper, DashedText } from '../index';
+import theme from '../../theme';
 
 const FilterList = styled(Flex)`
   display: flex;
@@ -77,8 +78,11 @@ const ProductListing = () => {
             }
             name
             primaryImage {
-              file {
-                url
+              mobileThumbnail: fluid(maxWidth: 200) {
+                ...GatsbyContentfulFluid_withWebp
+              }
+              desktopThumbnail: fluid(maxWidth: 400) {
+                ...GatsbyContentfulFluid_withWebp
               }
             }
           }
@@ -154,6 +158,9 @@ const ProductListing = () => {
                 fontSize={['1.25rem', '1.5rem']}
                 fontWeight='bold'
                 width='auto'
+                sx={{
+                  cursor: 'pointer',
+                }}
               >
                 {category}
               </Label>
@@ -172,40 +179,48 @@ const ProductListing = () => {
           filteredProducts.length < 6 ? 'center' : 'flex-start',
         ]}
       >
-        {filteredProducts.map(product => (
-          <Flex
-            as='li'
-            key={product.name}
-            flexDirection='column'
-            justifyContent='space-between'
-            width={[1 / 2, 1 / 6]}
-            p={['md', 5]}
-            sx={{
-              boxShadow: '0 0 0 1px #eee',
-            }}
-          >
+        {filteredProducts.map(product => {
+          console.log(product);
+          const imageSources = [
+            product.primaryImage.mobileThumbnail,
+            {
+              ...product.primaryImage.desktopThumbnail,
+              media: `(min-width ${theme.breakpoints.desktop})`,
+            },
+          ];
+          console.log(imageSources);
+          return (
             <Flex
+              as='li'
+              key={product.name}
               flexDirection='column'
-              justifyContent='center'
-              flex='1 1 auto'
+              justifyContent='space-between'
+              width={[1 / 2, 1 / 6]}
+              p={['md', 5]}
+              sx={{
+                boxShadow: '0 0 0 1px #eee',
+              }}
             >
-              <ImageWithShadow
-                src={product.primaryImage.file.url}
-                alt={product.name}
-              />
+              <Flex
+                flexDirection='column'
+                justifyContent='center'
+                flex='1 1 auto'
+              >
+                <ImageWithShadow fluid={imageSources} alt={product.name} />
+              </Flex>
+              <Heading
+                as='h3'
+                fontFamily='body'
+                fontSize={['1.25rem', '1.4rem']}
+                fontWeight='bold'
+                textAlign='center'
+                mt={['md', 'lg']}
+              >
+                {product.name}
+              </Heading>
             </Flex>
-            <Heading
-              as='h3'
-              fontFamily='body'
-              fontSize={['1.25rem', '1.4rem']}
-              fontWeight='bold'
-              textAlign='center'
-              mt={['md', 'lg']}
-            >
-              {product.name}
-            </Heading>
-          </Flex>
-        ))}
+          );
+        })}
       </Flex>
     </Box>
   );

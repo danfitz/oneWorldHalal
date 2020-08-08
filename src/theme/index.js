@@ -1,4 +1,5 @@
 const breakpoints = ['992px'];
+breakpoints.desktop = breakpoints[0];
 
 const fontSizes = ['1rem', '2rem', '3rem', '4rem', '5rem'];
 fontSizes.body = fontSizes[0];
