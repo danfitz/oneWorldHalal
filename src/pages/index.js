@@ -11,8 +11,8 @@ const Home = () => {
           node {
             heroTitle
             heroImage {
-              file {
-                url
+              fluid(maxWidth: 2000) {
+                ...GatsbyContentfulFluid_withWebp
               }
             }
             heroDescription
@@ -35,7 +35,7 @@ const Home = () => {
         buttonText={page.buttonText}
         buttonSlug={page.buttonSlug}
         hideHeroContent={page.hideHeroContent}
-        heroImage={page.heroImage.file.url}
+        heroImage={page.heroImage}
       />
       <InfoBlock
         title='Halal by Hand'

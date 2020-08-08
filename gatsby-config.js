@@ -32,6 +32,12 @@ module.exports = {
       },
     },
     /**
+     * image processing and optimization
+     * learn more: https://www.gatsbyjs.org/packages/gatsby-image/
+     */
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    /**
      * head metadata
      * used to add valuable metadata to HTML head
      * learn more: https://www.gatsbyjs.org/tutorial/seo-and-social-sharing-cards-tutorial/

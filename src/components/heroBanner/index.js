@@ -1,11 +1,10 @@
-import React, { useEffect, useRef } from 'react';
-import { string, bool } from 'prop-types';
+import React from 'react';
+import { string, bool, object } from 'prop-types';
 import styled from 'styled-components';
-import { Box, Flex, Heading, Text } from 'rebass/styled-components';
-import { Button } from '../index';
+import { Flex, Heading, Text } from 'rebass/styled-components';
+import { Button, BackgroundImage } from '../index';
 
-const HeroImageBox = styled(Box)`
-  background: url(${({ url }) => url});
+const HeroBackgroundImage = styled(BackgroundImage)`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -41,23 +40,8 @@ const HeroBanner = ({
   heroImage,
   hideHeroContent,
 }) => {
-  const ref = useRef(null);
-
-  useEffect(() => {
-    if (ref.current) {
-      const backgroundImage = window.getComputedStyle(ref.current)
-        .backgroundImage;
-      const src = backgroundImage.match(/\((.*?)\)/)[1].replace(/('|")/g, '');
-      const image = new Image();
-      image.onload = () => {
-        ref.current.style.opacity = 1;
-      };
-      image.src = src;
-    }
-  }, []);
-
   return (
-    <HeroImageBox ref={ref} url={heroImage}>
+    <HeroBackgroundImage fluid={heroImage.fluid}>
       <HeroOverlay px={['lg', 'xl']} hideHeroContent={hideHeroContent}>
         <Heading
           as='h1'
@@ -87,7 +71,7 @@ const HeroBanner = ({
           </Button>
         )}
       </HeroOverlay>
-    </HeroImageBox>
+    </HeroBackgroundImage>
   );
 };
 
@@ -96,7 +80,7 @@ HeroBanner.propTypes = {
   description: string,
   buttonText: string,
   buttonSlug: string,
-  heroImage: string.isRequired,
+  heroImage: object.isRequired,
   hideHeroContent: bool.isRequired,
 };
 

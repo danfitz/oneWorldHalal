@@ -10,8 +10,8 @@ const Products = () => {
           node {
             heroTitle
             heroImage {
-              file {
-                url
+              fluid(maxWidth: 2000) {
+                ...GatsbyContentfulFluid_withWebp
               }
             }
             heroDescription
@@ -34,7 +34,7 @@ const Products = () => {
         buttonText={page.buttonText}
         buttonSlug={page.buttonSlug}
         hideHeroContent={page.hideHeroContent}
-        heroImage={page.heroImage.file.url}
+        heroImage={page.heroImage}
       />
       <ProductListing />
     </>

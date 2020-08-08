@@ -8,6 +8,7 @@ export { default as Wrapper } from './wrapper';
 export { default as Link } from './link';
 export { default as Button } from './button';
 export { default as DashedText } from './dashedText';
+export { Image, BackgroundImage } from './image';
 
 // Custom higher-level components
 export { default as SocialIcons } from './socialIcons';
