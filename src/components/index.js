@@ -1,10 +1,15 @@
+// Layout-related components
+export { default as Layout } from './layout';
+export { default as SEO } from './seo';
+
+// UI Components
 export { default as Logo } from './logo';
 export { default as Wrapper } from './wrapper';
 export { default as Link } from './link';
 export { default as Button } from './button';
 export { default as DashedText } from './dashedText';
-export { default as Layout } from './layout';
-export { default as SEO } from './seo';
+
+// Custom higher-level components
 export { default as SocialIcons } from './socialIcons';
 export { default as HeroBanner } from './heroBanner';
 export { default as ProductListing } from './productListing';

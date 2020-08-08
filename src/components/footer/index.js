@@ -1,8 +1,8 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { useSiteMetadata } from '../../utils/queries';
-import { Wrapper, Logo, SocialIcons } from '../index';
-import { Box, Flex, Text, Heading, Link } from 'rebass/styled-components';
+import { Wrapper, Logo, SocialIcons, Link } from '../index';
+import { Box, Flex, Text, Heading } from 'rebass/styled-components';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 const Footer = () => {
@@ -71,7 +71,7 @@ const Footer = () => {
                   Phone:{' '}
                 </Text>
                 <Link
-                  href={`tel:${phoneNumber}`}
+                  to={`tel:${phoneNumber}`}
                   color='mediumGray'
                   sx={{
                     ':hover, :focus': { color: 'white' },
@@ -87,7 +87,7 @@ const Footer = () => {
                   Email:{' '}
                 </Text>
                 <Link
-                  href={`mailto:${email}`}
+                  to={`mailto:${email}`}
                   color='mediumGray'
                   sx={{
                     ':hover, :focus': { color: 'white' },
