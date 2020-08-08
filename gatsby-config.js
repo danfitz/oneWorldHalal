@@ -10,6 +10,14 @@ module.exports = {
   /* Your site config here */
   siteMetadata: {
     siteUrl: 'https://oneworldhalal.com',
+    pageTitles: {
+      index: 'Home',
+      404: 'Page Not Found',
+      products: 'Products',
+      about: 'About',
+      contact: 'Contact',
+      thanks: 'Thanks',
+    },
   },
   plugins: [
     {

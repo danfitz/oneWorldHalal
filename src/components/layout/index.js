@@ -19,4 +19,8 @@ Layout.propTypes = {
   children: node.isRequired,
 };
 
+Layout.defaultProps = {
+  pageTitle: '404',
+};
+
 export default Layout;
