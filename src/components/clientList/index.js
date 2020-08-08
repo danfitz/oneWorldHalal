@@ -1,11 +1,10 @@
 import React from 'react';
-import { string, object, node, shape, arrayOf } from 'prop-types';
+import { string, object, shape, arrayOf } from 'prop-types';
 import { Box } from 'rebass/styled-components';
 import ListBlock from '../listBlock';
 import { Image } from '../index';
 
 const ClientList = ({ title, subtitle, backgroundImage, clients }) => {
-  console.log(backgroundImage, clients);
   return (
     <ListBlock
       title={title}

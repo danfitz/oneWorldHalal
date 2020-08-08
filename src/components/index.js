@@ -19,6 +19,7 @@ export { default as Modal } from './modal';
 export { default as SocialIcons } from './socialIcons';
 export { default as HeroBanner } from './heroBanner';
 export { default as ProductListing } from './productListing';
+export { default as ContactForm } from './contactForm';
 
 const componentMapper = {
   infoBlock: InfoBlock,

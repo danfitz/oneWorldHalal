@@ -57,8 +57,8 @@ const Home = () => {
                 clients {
                   name
                   logo {
-                    fixed(width: 200) {
-                      ...GatsbyContentfulFixed_withWebp
+                    fluid(maxWidth: 200) {
+                      ...GatsbyContentfulFluid_withWebp
                     }
                   }
                 }
