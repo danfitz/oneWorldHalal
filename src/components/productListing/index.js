@@ -3,8 +3,8 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { Box, Flex, Heading } from 'rebass/styled-components';
 import { Label } from '@rebass/forms/styled-components';
 import styled from 'styled-components';
-import { Image, Wrapper, DashedText } from '../index';
-import theme from '../../theme';
+import { Wrapper, DashedText } from '../index';
+import ModalImage from 'react-modal-image';
 
 const FilterList = styled(Flex)`
   display: flex;
@@ -57,7 +57,8 @@ const FilterList = styled(Flex)`
   }
 `;
 
-const ImageWithShadow = styled(Image)`
+const ModalImageWithShadow = styled(ModalImage)`
+  width: 100%;
   filter: drop-shadow(
     0.5rem 0.5rem 0.5rem ${({ theme }) => theme.colors.mediumGray}
   );
@@ -77,11 +78,14 @@ const ProductListing = () => {
             }
             name
             primaryImage {
-              mobileThumbnail: fluid(maxWidth: 200) {
-                ...GatsbyContentfulFluid_withWebp
+              small: fixed(width: 300, quality: 25) {
+                src
               }
-              desktopThumbnail: fluid(maxWidth: 400) {
-                ...GatsbyContentfulFluid_withWebp
+              medium: fixed(width: 800, quality: 50) {
+                src
+              }
+              large: fixed(width: 800, quality: 100) {
+                src
               }
             }
           }
@@ -179,15 +183,6 @@ const ProductListing = () => {
         ]}
       >
         {filteredProducts.map(product => {
-          console.log(product);
-          const imageSources = [
-            product.primaryImage.mobileThumbnail,
-            {
-              ...product.primaryImage.desktopThumbnail,
-              media: `(min-width ${theme.breakpoints.desktop})`,
-            },
-          ];
-          console.log(imageSources);
           return (
             <Flex
               as='li'
@@ -205,7 +200,14 @@ const ProductListing = () => {
                 justifyContent='center'
                 flex='1 1 auto'
               >
-                <ImageWithShadow fluid={imageSources} alt={product.name} />
+                <ModalImageWithShadow
+                  small={product.primaryImage.small.src}
+                  medium={product.primaryImage.medium.src}
+                  large={product.primaryImage.large.src}
+                  alt={product.name}
+                  hideDownload
+                  imageBackgroundColor='white'
+                />
               </Flex>
               <Heading
                 as='h3'

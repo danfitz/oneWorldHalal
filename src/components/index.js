@@ -9,6 +9,7 @@ export { default as Link } from './link';
 export { default as Button } from './button';
 export { default as DashedText } from './dashedText';
 export { Image, BackgroundImage } from './image';
+export { default as Modal } from './modal';
 
 // Custom higher-level components
 export { default as SocialIcons } from './socialIcons';

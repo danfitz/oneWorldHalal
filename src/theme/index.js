@@ -162,6 +162,12 @@ const buttons = {
       boxShadow: '0 0 0 0.15rem magenta',
     },
   },
+  none: {
+    color: 'black',
+    background: 'transparent',
+    padding: 0,
+    borderRadius: 0,
+  },
 };
 
 export default {
