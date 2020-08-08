@@ -19,21 +19,48 @@ const Products = () => {
             buttonSlug
             hideHeroContent
             components {
-              sys {
-                contentType {
-                  sys {
-                    id
+              ... on ContentfulInfoBlock {
+                sys {
+                  contentType {
+                    sys {
+                      id
+                    }
+                  }
+                }
+                title
+                subtitle
+                childContentfulInfoBlockContentTextNode {
+                  content
+                }
+                image {
+                  title
+                  fluid(maxWidth: 100) {
+                    ...GatsbyContentfulFluid_withWebp
                   }
                 }
               }
-              title
-              subtitle
-              childContentfulInfoBlockContentTextNode {
-                content
-              }
-              image {
-                fluid(maxWidth: 100) {
-                  ...GatsbyContentfulFluid_withWebp
+              ... on ContentfulClientList {
+                sys {
+                  contentType {
+                    sys {
+                      id
+                    }
+                  }
+                }
+                title
+                subtitle
+                backgroundImage {
+                  fluid(maxWidth: 2000) {
+                    ...GatsbyContentfulFluid_withWebp
+                  }
+                }
+                clients {
+                  name
+                  logo {
+                    fixed(width: 200) {
+                      ...GatsbyContentfulFixed_withWebp
+                    }
+                  }
                 }
               }
             }

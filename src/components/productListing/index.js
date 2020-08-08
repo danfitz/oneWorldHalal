@@ -46,7 +46,7 @@ const FilterList = styled(Flex)`
     }
   }
 
-  @media (min-width: ${({ theme }) => theme.breakpoints[0]}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     > div:not(:last-child) {
       margin-right: 4rem;
 

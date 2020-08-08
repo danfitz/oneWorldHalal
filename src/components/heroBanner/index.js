@@ -9,11 +9,9 @@ const HeroBackgroundImage = styled(BackgroundImage)`
   background-size: cover;
   background-repeat: no-repeat;
   min-height: calc(100vh - 4rem);
-  opacity: 0;
   position: relative;
-  transition: opacity 1s ease;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints[0]}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     min-height: calc(80vh - 4rem);
   }
 `;
