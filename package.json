@@ -14,6 +14,11 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "preload-fonts": "gatsby-preload-fonts"
   },
+  "husky": {
+    "hooks": {
+      "pre-push": "gatsby-preload-fonts"
+    }
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
@@ -48,6 +53,7 @@
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
+    "husky": "^4.2.5",
     "prettier": "2.0.5"
   },
   "repository": {
