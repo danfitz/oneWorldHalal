@@ -10,7 +10,7 @@ import moment from 'moment';
 const InstagramFeed = ({ title, subtitle, backgroundImage }) => {
   const { allInstaNode } = useStaticQuery(graphql`
     query InstagramQuery {
-      allInstaNode(limit: 12) {
+      allInstaNode(limit: 12, sort: { fields: timestamp, order: DESC }) {
         edges {
           node {
             likes
