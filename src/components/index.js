@@ -1,6 +1,7 @@
 import React from 'react';
 import InfoBlock from './infoBlock';
 import ClientList from './clientList';
+import InstagramFeed from './instagramFeed';
 
 // Layout-related components
 export { default as Layout } from './layout';
@@ -24,6 +25,7 @@ export { default as ContactForm } from './contactForm';
 const componentMapper = {
   infoBlock: InfoBlock,
   clientList: ClientList,
+  instagramFeed: InstagramFeed,
 };
 
 export const createComponent = (componentData, key) => {

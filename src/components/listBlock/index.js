@@ -1,8 +1,8 @@
 import React from 'react';
-import { string, object, node, shape } from 'prop-types';
+import { string, object, node, shape, oneOf } from 'prop-types';
 import { Box, Heading } from 'rebass/styled-components';
 import styled from 'styled-components';
-import { BackgroundImage, Wrapper, DashedText } from '../index';
+import { BackgroundImage, Wrapper, DashedText, Button } from '../index';
 
 const BackgroundOverlay = styled(Box)`
   background: rgba(0, 0, 0, 0.7);
@@ -21,7 +21,7 @@ const Grid = styled(Box)`
   }
 `;
 
-const ListBlock = ({ title, subtitle, backgroundImage, children }) => {
+const ListBlock = ({ title, subtitle, backgroundImage, cta, children }) => {
   return (
     <Box as='section' textAlign='center'>
       <BackgroundImage fluid={backgroundImage.fluid}>
@@ -42,6 +42,17 @@ const ListBlock = ({ title, subtitle, backgroundImage, children }) => {
             <Grid as='ul' mt={['lg', 'xl']}>
               {children}
             </Grid>
+
+            {cta && (
+              <Button
+                variant='dark'
+                to={cta.to}
+                textAlign='center'
+                mt={['lg', 'xl']}
+              >
+                {cta.text}
+              </Button>
+            )}
           </Wrapper>
         </BackgroundOverlay>
       </BackgroundImage>
@@ -55,7 +66,15 @@ ListBlock.propTypes = {
   backgroundImage: shape({
     fluid: object.isRequired,
   }),
+  cta: shape({
+    to: oneOf([string, object]).isRequired,
+    text: string.isRequired,
+  }),
   children: node.isRequired,
+};
+
+ListBlock.defaultProps = {
+  cta: null,
 };
 
 export default ListBlock;

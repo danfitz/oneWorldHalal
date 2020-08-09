@@ -63,6 +63,22 @@ const Contact = () => {
                   }
                 }
               }
+              ... on ContentfulInstagramFeed {
+                sys {
+                  contentType {
+                    sys {
+                      id
+                    }
+                  }
+                }
+                title
+                subtitle
+                backgroundImage {
+                  fluid(maxWidth: 2000) {
+                    ...GatsbyContentfulFluid_withWebp
+                  }
+                }
+              }
             }
           }
         }

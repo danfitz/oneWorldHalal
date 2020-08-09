@@ -5,7 +5,12 @@ import {
   faPinterest,
   faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
-import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import {
+  faPhone,
+  faEnvelope,
+  faHeart,
+  faClock,
+} from '@fortawesome/free-solid-svg-icons';
 
 library.add(
   faFacebook,
@@ -13,5 +18,7 @@ library.add(
   faPinterest,
   faInstagram,
   faPhone,
-  faEnvelope
+  faEnvelope,
+  faHeart,
+  faClock
 );

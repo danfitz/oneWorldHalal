@@ -10,6 +10,7 @@ export const useSiteMetadata = () => {
           author
           keywords
           siteUrl
+          instagramUrl
         }
       }
     `
