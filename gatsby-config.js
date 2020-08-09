@@ -33,6 +33,7 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
+    'gatsby-plugin-preload-fonts',
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
