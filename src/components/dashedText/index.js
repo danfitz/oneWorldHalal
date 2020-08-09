@@ -42,7 +42,6 @@ const StyledText = styled(Text)`
 `;
 
 const DashedText = ({ children, mode, ...props }) => {
-  console.log(mode);
   return (
     <Box
       sx={{ overflowX: 'hidden' }}

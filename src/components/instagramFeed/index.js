@@ -48,7 +48,7 @@ const InstagramFeed = ({ title, subtitle, backgroundImage }) => {
           <Box p='md'>
             <Flex justifyContent='space-between'>
               <Box>
-                <Box as='span' color className='visuallyHidden'>
+                <Box as='span' className='visuallyHidden'>
                   Likes:
                 </Box>
                 <Box as='span' color='magenta'>

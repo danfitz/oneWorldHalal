@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, object, node, shape, oneOf } from 'prop-types';
+import { string, object, node, shape, oneOfType } from 'prop-types';
 import { Box, Heading } from 'rebass/styled-components';
 import styled from 'styled-components';
 import { BackgroundImage, Wrapper, DashedText, Button } from '../index';
@@ -67,7 +67,7 @@ ListBlock.propTypes = {
     fluid: object.isRequired,
   }),
   cta: shape({
-    to: oneOf([string, object]).isRequired,
+    to: oneOfType([string, object]).isRequired,
     text: string.isRequired,
   }),
   children: node.isRequired,

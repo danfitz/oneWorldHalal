@@ -57,6 +57,7 @@ const HeroBanner = ({
             color='white'
             fontSize='1.25rem'
             mb='lg'
+            fontWeight='subheading'
             className={hideHeroContent && 'visuallyHidden'}
           >
             {description}
