@@ -130,6 +130,42 @@ const variants = {
       color: 'accent',
     },
   },
+  primaryButton: {
+    display: 'inline-block',
+    textDecoration: 'none',
+    color: 'white',
+    ':visited': {
+      color: 'white',
+    },
+    bg: 'magenta',
+    py: 'md',
+    px: 'lg',
+    fontSize: '1.25rem',
+    fontWeight: 'bold',
+    ':hover, :focus': {
+      bg: 'transparent',
+      boxShadow: '0 0 0 0.15rem magenta',
+      color: 'black',
+    },
+  },
+  darkButton: {
+    display: 'inline-block',
+    textDecoration: 'none',
+    color: 'white',
+    ':visited': {
+      color: 'white',
+    },
+    bg: 'magenta',
+    py: 'md',
+    px: 'lg',
+    fontSize: '1.25rem',
+    fontWeight: 'bold',
+    borderRadius: 0,
+    ':hover, :focus': {
+      bg: 'transparent',
+      boxShadow: '0 0 0 0.15rem magenta',
+    },
+  },
 };
 
 const buttons = {

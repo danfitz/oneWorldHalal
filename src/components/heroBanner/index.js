@@ -65,7 +65,10 @@ const HeroBanner = ({
         )}
 
         {buttonText && buttonSlug && !hideHeroContent && (
-          <Button variant='dark' to={`/${buttonSlug}`}>
+          <Button
+            variant='dark'
+            to={buttonSlug === '/' ? buttonSlug : `/${buttonSlug}`}
+          >
             {buttonText}
           </Button>
         )}

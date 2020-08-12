@@ -50,7 +50,11 @@ const Header = () => {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <Box as='header' py='sm'>
+    <Box
+      as='header'
+      py='sm'
+      sx={{ boxShadow: '0 0.2rem 0.5rem 0.1rem rgba(240,240,240)' }}
+    >
       <Wrapper
         display='flex'
         justifyContent='space-between'

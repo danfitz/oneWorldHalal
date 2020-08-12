@@ -1,29 +1,46 @@
 import React from 'react';
-import { Flex, Heading, Text } from 'rebass/styled-components';
-import { Button, Wrapper } from '../components';
+import { Heading, Text, Box } from 'rebass/styled-components';
+import { Button, Wrapper, Image } from '../components';
+import { useStaticQuery, graphql } from 'gatsby';
 
 const FourOhFour = () => {
+  const { contentfulPage } = useStaticQuery(graphql`
+    query FourOhFourPageQuery {
+      contentfulPage(slug: { eq: "404" }) {
+        ...PageFields
+      }
+    }
+  `);
+
+  const {
+    heroImage,
+    heroTitle,
+    heroDescription,
+    buttonText,
+    buttonSlug,
+  } = contentfulPage;
+
   return (
     <Wrapper>
-      <Flex
-        sx={{ minHeight: ['80vh', '80vh'] }}
-        flexDirection='column'
-        justifyContent='center'
-        alignItems='center'
-      >
+      <Box mt='xl' textAlign='center'>
         <Heading
           as='h1'
           fontSize={['heading', 'superheading']}
           mb='md'
           color='orange'
         >
-          404
+          {heroTitle}
         </Heading>
-        <Text as='p' fontSize='1.25rem' mb='lg' textAlign='center'>
-          This page is missing or you took a wrong turn!
+        <Text as='p' mb='md' fontSize='1.25rem' textAlign='center'>
+          {heroDescription}
         </Text>
-        <Button to='/'>Go Home</Button>
-      </Flex>
+        <Button to={buttonSlug === '/' ? buttonSlug : `/${buttonSlug}`} my='md'>
+          {buttonText}
+        </Button>
+        <Box width={[1, 1 / 2]} mx='auto'>
+          <Image fluid={heroImage.fluid} />
+        </Box>
+      </Box>
     </Wrapper>
   );
 };

@@ -44,7 +44,7 @@ const StyledText = styled(Text)`
 const DashedText = ({ children, mode, ...props }) => {
   return (
     <Box
-      sx={{ overflowX: 'hidden' }}
+      sx={{ overflow: 'hidden' }}
       color={mode === 'black' ? 'trueBlack' : 'trueWhite'}
     >
       <StyledText as='span' darkMode={mode === 'white'} {...props}>
