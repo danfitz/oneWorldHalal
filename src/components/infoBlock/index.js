@@ -11,7 +11,7 @@ const InfoBlock = ({
 }) => {
   return (
     <Box as='section' py={['xl', 'xxl']} textAlign='center'>
-      <Wrapper width={[9 / 10, 1 / 3]}>
+      <Wrapper width={[9 / 10, 2 / 5]}>
         <Heading as='h2' mb='md' fontSize={['subheading', 'heading']}>
           {title}
         </Heading>
