@@ -26,8 +26,12 @@ const HeroOverlay = styled(Flex)`
     !hideHeroContent && 'background: rgba(0, 0, 0, 0.5);'}
   height: 100%;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    align-items: center;
+  }
 `;
 
 const HeroBanner = ({
