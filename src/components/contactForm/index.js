@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Flex, Box, Heading, Text } from 'rebass/styled-components';
 import { Label, Input, Textarea } from '@rebass/forms/styled-components';
-import { Wrapper, Button, Image, Link, SocialIcons } from '../index';
+import { Wrapper, Button, Image, Link } from '../index';
 import styled from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 const InputBox = styled(Box)`
   position: relative;
