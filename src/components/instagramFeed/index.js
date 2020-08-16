@@ -43,7 +43,14 @@ const InstagramFeed = ({ title, subtitle, backgroundImage }) => {
       }}
     >
       {posts.map(post => (
-        <Box as='li' key={post.timestamp} bg='trueWhite'>
+        <Box
+          as='li'
+          key={post.timestamp}
+          bg='trueWhite'
+          sx={{
+            boxShadow: !backgroundImage && '0 0 0.25rem 0.05rem #eee',
+          }}
+        >
           <Image src={post.src} alt='' width={1} />
           <Box p='md'>
             <Flex justifyContent='space-between'>

@@ -12,7 +12,15 @@ const ClientList = ({ title, subtitle, backgroundImage, clients }) => {
       backgroundImage={backgroundImage}
     >
       {clients.map(client => (
-        <Box as='li' key={client.name} bg='trueWhite' p='md'>
+        <Box
+          as='li'
+          key={client.name}
+          bg='trueWhite'
+          p='md'
+          sx={{
+            boxShadow: !backgroundImage && '0 0 0.25rem 0.05rem #eee',
+          }}
+        >
           <Image fluid={client.logo.fluid} alt={client.name} />
         </Box>
       ))}

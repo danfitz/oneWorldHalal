@@ -46,8 +46,8 @@ export const pageFields = graphql`
         }
         title
         subtitle
-        childContentfulInfoBlockContentTextNode {
-          content
+        content {
+          json
         }
         image {
           title
