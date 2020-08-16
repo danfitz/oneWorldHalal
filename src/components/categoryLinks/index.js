@@ -21,11 +21,15 @@ const StyledLink = styled(Link)`
 
 const StyledBackgroundImage = styled(BackgroundImage)`
   position: relative;
-  min-height: 15rem;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  min-height: 7.5rem;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    min-height: 15rem;
+  }
 `;
 
 const BgOverlay = styled(Box)`
@@ -60,11 +64,15 @@ const CategoryLinks = () => {
   }));
 
   return (
-    <Flex as='ul' sx={{ listStyle: 'none', p: 0, m: 0 }}>
+    <Flex
+      as='ul'
+      sx={{ listStyle: 'none', p: 0, m: 0 }}
+      flexDirection={['column', 'row']}
+    >
       {categories.map(category => (
         <StyledLink
           to={`/products?category=${category.name}`}
-          width={1 / categories.length}
+          width={[1, 1 / categories.length]}
         >
           <StyledBackgroundImage
             fluid={category.categoryImage.fluid}
@@ -74,7 +82,7 @@ const CategoryLinks = () => {
             <Text
               className='categoryText'
               fontWeight='heading'
-              fontSize='heading'
+              fontSize={['subheading', 'heading']}
               color='white'
               sx={{
                 position: 'relative',
