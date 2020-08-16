@@ -11,8 +11,6 @@ const Home = () => {
     }
   `);
 
-  console.log(contentfulPage);
-
   return (
     <>
       <HeroBanner
