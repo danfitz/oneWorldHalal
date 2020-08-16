@@ -1,8 +1,9 @@
 import React from 'react';
-import { string, bool, object } from 'prop-types';
+import { string, bool, object, shape } from 'prop-types';
 import styled from 'styled-components';
-import { Flex, Heading, Text } from 'rebass/styled-components';
+import { Box, Flex, Heading } from 'rebass/styled-components';
 import { Button, BackgroundImage } from '../index';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 const HeroBackgroundImage = styled(BackgroundImage)`
   background-position: center;
@@ -10,6 +11,8 @@ const HeroBackgroundImage = styled(BackgroundImage)`
   background-repeat: no-repeat;
   min-height: calc(100vh - 4rem);
   position: relative;
+  display: flex;
+  align-items: center;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     min-height: calc(80vh - 4rem);
@@ -22,15 +25,50 @@ const HeroOverlay = styled(Flex)`
   right: 0;
   top: 0;
   bottom: 0;
-  ${({ hideHeroContent }) =>
-    !hideHeroContent && 'background: rgba(0, 0, 0, 0.5);'}
+  ${({ hideHeroContent, richTextFound }) => {
+    if (hideHeroContent) {
+      return '';
+    } else if (richTextFound) {
+      return 'background: rgba(0, 0, 0, 0.75);';
+    } else {
+      return 'background: rgba(0, 0, 0, 0.5);';
+    }
+  }}
+`;
+
+const ContentBox = styled(Box)`
   height: 100%;
+  position: relative;
+  z-index: 1;
+
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     align-items: center;
+    text-align: center;
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+`;
+
+const StyledRichText = styled(Box)`
+  color: ${({ theme }) => theme.colors.white};
+
+  p {
+    font-size: 1.15rem;
+    margin-bottom: ${({ theme }) => theme.space.lg};
+  }
+
+  blockquote {
+    margin: 0;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    p {
+      font-size: ${({ theme }) => theme.fontSizes[5]};
+    }
   }
 `;
 
@@ -43,8 +81,13 @@ const HeroBanner = ({
   hideHeroContent,
 }) => {
   return (
-    <HeroBackgroundImage fluid={heroImage.fluid}>
-      <HeroOverlay p={['lg', 'xl']} hideHeroContent={hideHeroContent}>
+    <HeroBackgroundImage fluid={heroImage.fluid} p={['lg', 'xl']} pt='xl'>
+      <HeroOverlay
+        hideHeroContent={hideHeroContent}
+        richTextFound={description && description.json}
+      />
+
+      <ContentBox>
         <Heading
           as='h1'
           color='trueWhite'
@@ -55,17 +98,10 @@ const HeroBanner = ({
           {title}
         </Heading>
 
-        {description && (
-          <Text
-            as='p'
-            color='white'
-            fontSize='1.25rem'
-            mb='lg'
-            fontWeight='subheading'
-            className={hideHeroContent && 'visuallyHidden'}
-          >
-            {description}
-          </Text>
+        {description && description.json && (
+          <StyledRichText className={hideHeroContent && 'visuallyHidden'}>
+            {documentToReactComponents(description.json)}
+          </StyledRichText>
         )}
 
         {buttonText && buttonSlug && !hideHeroContent && (
@@ -76,14 +112,14 @@ const HeroBanner = ({
             {buttonText}
           </Button>
         )}
-      </HeroOverlay>
+      </ContentBox>
     </HeroBackgroundImage>
   );
 };
 
 HeroBanner.propTypes = {
   title: string.isRequired,
-  description: string,
+  description: shape({ json: object.isRequired }).isRequired,
   buttonText: string,
   buttonSlug: string,
   heroImage: object.isRequired,

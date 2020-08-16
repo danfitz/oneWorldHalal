@@ -29,7 +29,9 @@ export const pageFields = graphql`
         ...GatsbyContentfulFluid_withWebp
       }
     }
-    heroDescription
+    heroDescription {
+      json
+    }
     buttonText
     buttonSlug
     hideHeroContent
