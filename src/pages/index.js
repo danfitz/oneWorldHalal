@@ -1,6 +1,6 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import { HeroBanner, createComponent } from '../components';
+import { HeroBanner, CategoryLinks, createComponent } from '../components';
 
 const Home = () => {
   const { contentfulPage } = useStaticQuery(graphql`
@@ -10,8 +10,6 @@ const Home = () => {
       }
     }
   `);
-
-  console.log(contentfulPage);
 
   return (
     <>
@@ -23,6 +21,8 @@ const Home = () => {
         hideHeroContent={contentfulPage.hideHeroContent}
         heroImage={contentfulPage.heroImage}
       />
+      <CategoryLinks />
+
       {contentfulPage.components &&
         contentfulPage.components.map(createComponent)}
     </>

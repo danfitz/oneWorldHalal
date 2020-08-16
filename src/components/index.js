@@ -21,6 +21,7 @@ export { default as SocialIcons } from './socialIcons';
 export { default as HeroBanner } from './heroBanner';
 export { default as ProductListing } from './productListing';
 export { default as ContactForm } from './contactForm';
+export { default as CategoryLinks } from './categoryLinks';
 
 const componentMapper = {
   infoBlock: InfoBlock,
