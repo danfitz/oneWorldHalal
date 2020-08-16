@@ -102,7 +102,7 @@ const ProductListing = () => {
   `);
 
   const location = useLocation();
-  const history = createHistory(window);
+  const history = typeof window !== 'undefined' ? createHistory(window) : null;
 
   const products = allContentfulProduct.edges.map(edge => edge.node);
   const productCategories = allContentfulProductCategory.nodes
@@ -115,14 +115,19 @@ const ProductListing = () => {
   const handleCategoryChange = event => {
     if (event.target.checked) {
       const newCategory = event.target.value;
+
       setSelectedCategory(newCategory);
+
       const url =
         newCategory === 'all'
           ? '/products'
           : `/products?category=${newCategory}`;
-      history.navigate(url, {
-        replace: true,
-      });
+
+      if (history) {
+        history.navigate(url, {
+          replace: true,
+        });
+      }
     }
   };
 

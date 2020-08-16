@@ -76,7 +76,11 @@ const CategoryLinks = () => {
               fontWeight='heading'
               fontSize='heading'
               color='white'
-              sx={{ position: 'relative', zIndex: 1 }}
+              sx={{
+                position: 'relative',
+                zIndex: 1,
+                textTransform: 'capitalize',
+              }}
             >
               {category.name}
             </Text>
