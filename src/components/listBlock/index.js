@@ -76,12 +76,7 @@ const ListBlock = ({ title, subtitle, backgroundImage, cta, children }) => {
           </Grid>
 
           {cta && (
-            <Button
-              variant='dark'
-              to={cta.to}
-              textAlign='center'
-              mt={['lg', 'xl']}
-            >
+            <Button to={cta.to} textAlign='center' mt={['lg', 'xl']}>
               {cta.text}
             </Button>
           )}

@@ -138,7 +138,7 @@ const ContactForm = () => {
             <Box
               as='ul'
               textAlign='center'
-              fontSize={['1.25rem', 5]}
+              fontSize={['1.25rem', '1.35rem']}
               sx={{
                 listStyle: 'none',
                 pl: 0,

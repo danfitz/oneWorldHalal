@@ -54,13 +54,16 @@ const CategoryLinks = () => {
     }
   `);
 
-  const categories = allContentfulProductCategory.nodes;
+  const categories = allContentfulProductCategory.nodes.map(node => ({
+    ...node,
+    name: node.name.toLowerCase().trim(),
+  }));
 
   return (
     <Flex as='ul' sx={{ listStyle: 'none', p: 0, m: 0 }}>
       {categories.map(category => (
         <StyledLink
-          to={`/products?category=${category.name.toLowerCase().trim()}`}
+          to={`/products?category=${category.name}`}
           width={1 / categories.length}
         >
           <StyledBackgroundImage

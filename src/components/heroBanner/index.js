@@ -13,6 +13,7 @@ const HeroBackgroundImage = styled(BackgroundImage)`
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     min-height: calc(80vh - 4rem);
@@ -67,7 +68,7 @@ const StyledRichText = styled(Box)`
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     p {
-      font-size: ${({ theme }) => theme.fontSizes[5]};
+      font-size: 1.4rem;
     }
   }
 `;

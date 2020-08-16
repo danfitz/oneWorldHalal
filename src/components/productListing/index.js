@@ -5,6 +5,8 @@ import { Label } from '@rebass/forms/styled-components';
 import styled from 'styled-components';
 import { Wrapper, DashedText } from '../index';
 import ModalImage from 'react-modal-image';
+import { parse } from 'query-string';
+import { useLocation, createHistory } from '@reach/router';
 
 const FilterList = styled(Flex)`
   display: flex;
@@ -98,21 +100,38 @@ const ProductListing = () => {
       }
     }
   `);
+
+  const location = useLocation();
+  const history = createHistory(window);
+
   const products = allContentfulProduct.edges.map(edge => edge.node);
   const productCategories = allContentfulProductCategory.nodes
-    .map(node => node.name)
+    .map(node => node.name.toLowerCase().trim())
     .sort();
 
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState(
+    parse(location.search).category || 'all'
+  );
   const handleCategoryChange = event => {
     if (event.target.checked) {
-      setSelectedCategory(event.target.value);
+      const newCategory = event.target.value;
+      setSelectedCategory(newCategory);
+      const url =
+        newCategory === 'all'
+          ? '/products'
+          : `/products?category=${newCategory}`;
+      history.navigate(url, {
+        replace: true,
+      });
     }
   };
 
   const filteredProducts =
-    selectedCategory !== 'All'
-      ? products.filter(product => product.category.name === selectedCategory)
+    selectedCategory !== 'all'
+      ? products.filter(
+          product =>
+            product.category.name.toLowerCase().trim() === selectedCategory
+        )
       : products;
 
   return (
@@ -121,7 +140,7 @@ const ProductListing = () => {
         <Heading as='h2' mb='md' fontSize={['subheading', 'heading']}>
           Our Menu
         </Heading>
-        <DashedText>Halal by Hand</DashedText>
+        <DashedText>On Our Shelves</DashedText>
         <Box as='span' className='visuallyHidden'>
           Categories
         </Box>
@@ -131,8 +150,8 @@ const ProductListing = () => {
               type='radio'
               name='category'
               id='all'
-              value='All'
-              checked={selectedCategory === 'All'}
+              value='all'
+              checked={selectedCategory === 'all'}
               onChange={handleCategoryChange}
             />
             <Label
@@ -163,6 +182,7 @@ const ProductListing = () => {
                 width='auto'
                 sx={{
                   cursor: 'pointer',
+                  textTransform: 'capitalize',
                 }}
               >
                 {category}
