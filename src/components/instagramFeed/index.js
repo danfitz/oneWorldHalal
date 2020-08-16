@@ -85,7 +85,7 @@ const InstagramFeed = ({ title, subtitle, backgroundImage }) => {
                 </Box>
               </Box>
             </Flex>
-            <Text as='p' textAlign='left' mt='md'>
+            <Text as='p' textAlign='left' mt='md' display={['none', 'block']}>
               {post.caption.split(' ').slice(0, 20).join(' ')}...
             </Text>
           </Box>
