@@ -138,7 +138,7 @@ const ProductListing = () => {
     if (ref.current && categoryQuery) {
       ref.current.scrollIntoView();
     }
-  }, []);
+  }, [categoryQuery]);
 
   const filteredProducts =
     selectedCategory !== 'all'
