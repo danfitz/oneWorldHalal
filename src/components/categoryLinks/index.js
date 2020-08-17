@@ -5,6 +5,8 @@ import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 const StyledLink = styled(Link)`
+  display: block;
+
   :hover,
   :focus {
     .bgOverlay {
@@ -70,30 +72,29 @@ const CategoryLinks = () => {
       flexDirection={['column', 'row']}
     >
       {categories.map(category => (
-        <StyledLink
-          to={`/products?category=${category.name}`}
-          width={[1, 1 / categories.length]}
-        >
-          <StyledBackgroundImage
-            fluid={category.categoryImage.fluid}
-            key={category.name}
-          >
-            <BgOverlay className='bgOverlay' />
-            <Text
-              className='categoryText'
-              fontWeight='heading'
-              fontSize={['subheading', 'heading']}
-              color='white'
-              sx={{
-                position: 'relative',
-                zIndex: 1,
-                textTransform: 'capitalize',
-              }}
+        <Box as='li' width={[1, 1 / categories.length]}>
+          <StyledLink to={`/products?category=${category.name}`}>
+            <StyledBackgroundImage
+              fluid={category.categoryImage.fluid}
+              key={category.name}
             >
-              {category.name}
-            </Text>
-          </StyledBackgroundImage>
-        </StyledLink>
+              <BgOverlay className='bgOverlay' />
+              <Text
+                className='categoryText'
+                fontWeight='heading'
+                fontSize={['subheading', '2.5rem']}
+                color='white'
+                sx={{
+                  position: 'relative',
+                  zIndex: 1,
+                  textTransform: 'capitalize',
+                }}
+              >
+                {category.name}
+              </Text>
+            </StyledBackgroundImage>
+          </StyledLink>
+        </Box>
       ))}
     </Flex>
   );

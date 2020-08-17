@@ -26,14 +26,8 @@ const HeroOverlay = styled(Flex)`
   right: 0;
   top: 0;
   bottom: 0;
-  ${({ hideHeroContent, richTextFound }) => {
-    if (hideHeroContent) {
-      return '';
-    } else if (richTextFound) {
-      return 'background: rgba(0, 0, 0, 0.75);';
-    } else {
-      return 'background: rgba(0, 0, 0, 0.5);';
-    }
+  ${({ hideHeroContent }) =>
+    !hideHeroContent && 'background: rgba(0, 0, 0, 0.5);'}
   }}
 `;
 
@@ -120,7 +114,7 @@ const HeroBanner = ({
 
 HeroBanner.propTypes = {
   title: string.isRequired,
-  description: shape({ json: object.isRequired }).isRequired,
+  description: shape({ json: object.isRequired }),
   buttonText: string,
   buttonSlug: string,
   heroImage: object.isRequired,

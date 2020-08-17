@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Box, Flex, Heading } from 'rebass/styled-components';
 import { Label } from '@rebass/forms/styled-components';
@@ -109,8 +109,10 @@ const ProductListing = () => {
     .map(node => node.name.toLowerCase().trim())
     .sort();
 
+  const categoryQuery = parse(location.search).category;
+
   const [selectedCategory, setSelectedCategory] = useState(
-    parse(location.search).category || 'all'
+    categoryQuery || 'all'
   );
   const handleCategoryChange = event => {
     if (event.target.checked) {
@@ -131,6 +133,13 @@ const ProductListing = () => {
     }
   };
 
+  const ref = useRef(null);
+  useEffect(() => {
+    if (ref.current && categoryQuery) {
+      ref.current.scrollIntoView();
+    }
+  }, []);
+
   const filteredProducts =
     selectedCategory !== 'all'
       ? products.filter(
@@ -140,7 +149,7 @@ const ProductListing = () => {
       : products;
 
   return (
-    <Box as='section' py={['xl', 'xxl']}>
+    <Box as='section' py={['xl', 'xxl']} ref={ref}>
       <Wrapper textAlign='center' mb='xl'>
         <Heading as='h2' mb='md' fontSize={['subheading', 'heading']}>
           Our Menu
