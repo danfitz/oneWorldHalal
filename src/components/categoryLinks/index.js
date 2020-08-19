@@ -68,7 +68,12 @@ const CategoryLinks = () => {
   return (
     <Flex
       as='ul'
-      sx={{ listStyle: 'none', p: 0, m: 0 }}
+      sx={{
+        listStyle: 'none',
+        p: 0,
+        m: 0,
+        mt: 'md',
+      }}
       flexDirection={['column', 'row']}
     >
       {categories.map(category => (

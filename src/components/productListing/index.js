@@ -152,7 +152,7 @@ const ProductListing = () => {
     <Box as='section' py={['xl', 'xxl']} ref={ref}>
       <Wrapper textAlign='center' mb='xl'>
         <Heading as='h2' mb='md' fontSize={['subheading', 'heading']}>
-          Our Menu
+          Our Products
         </Heading>
         <DashedText>On Our Shelves</DashedText>
         <Box as='span' className='visuallyHidden'>
