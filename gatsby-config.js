@@ -20,6 +20,7 @@ module.exports = {
     },
   },
   plugins: [
+    'gatsby-plugin-favicon',
     {
       resolve: 'gatsby-source-instagram',
       options: {
