@@ -33,13 +33,7 @@ const InfoBlock = ({ title, subtitle, content, image }) => {
           <DashedText>{subtitle}</DashedText>
         </Box>
 
-        <StyledRichText
-        // as='p'
-        // my={['lg', 'xl']}
-        // fontSize={['1.1rem', '1.25rem']}
-        // lineHeight='1.5'
-        // fontStyle='italic'
-        >
+        <StyledRichText>
           {documentToReactComponents(content.json)}
         </StyledRichText>
 
